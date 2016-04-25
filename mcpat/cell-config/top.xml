@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--
+    This configuration approximates the Cell Broadband Processor architecture.
+    Parameters are taken from the following publications:
+
+    [1] http://www.ece.sunysb.edu/~midor/ESE545/Cell_01564346.pdf
+    [2] http://www.cs.utexas.edu/~pingali/CS395T/2013fa/papers/kahle.pdf
+ -->
+<component id="root" name="root">
+  <component id="system" name="system">
+    <!--McPAT will skip the components if number is set to 0 -->
+    <param name="number_of_cores" value="{{num_cores}}"/>
+    <param name="number_of_L1Directories" value="2"/>
+    <param name="number_of_L2Directories" value="0"/>
+    <param name="number_of_L2s" value="1"/> <!-- This number means how many L2 clusters in each cluster there can be multiple banks/ports -->
+    <param name="number_of_L3s" value="0"/> <!-- This number means how many L3 clusters -->
+    <param name="number_of_NoCs" value="1"/>
+    <param name="homogeneous_cores" value="0"/><!--1 means homo -->
+    <param name="homogeneous_L2s" value="1"/>
+    <param name="homogeneous_L1Directories" value="1"/>
+    <param name="homogeneous_L2Directories" value="1"/>
+    <param name="homogeneous_L3s" value="1"/>
+    <param name="homogeneous_ccs" value="1"/><!--cache coherence hardware -->
+    <param name="homogeneous_NoCs" value="1"/>
+    <param name="core_tech_node" value="{{scale}}"/><!-- nm -->
+    <param name="target_core_clockrate" value="{{frequency}}"/><!--MHz -->
+    <param name="temperature" value="350"/> <!-- Kelvin -->
+    <param name="number_cache_levels" value="2"/>
+    <param name="interconnect_projection_type" value="0"/><!--0: aggressive wire technology; 1: conservative wire technology -->
+    <param name="device_type" value="0"/><!--0: HP(High Performance Type); 1: LSTP(Low standby power) 2: LOP (Low Operating Power)  -->
+    <param name="longer_channel_device" value="1"/><!-- 0 no use; 1 use when possible -->
+    <param name="power_gating" value="1"/><!-- 0 not enabled; 1 enabled -->
+    <param name="machine_bits" value="64"/>
+    <param name="virtual_address_width" value="64"/>
+    <param name="physical_address_width" value="52"/>
+    <param name="virtual_memory_page_size" value="4096"/>
+    <stat name="total_cycles" value="{{total_cycles}}"/>
+    <stat name="idle_cycles" value="0"/>
+    <stat name="busy_cycles"  value="{{total_cycles}}"/>
+

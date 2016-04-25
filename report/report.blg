@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: report.aux
+The style file: abbrv.bst
+Database file #1: sigproc.bib
+Warning--empty journal in buttari2007limitations
+You've used 13 entries,
+            2118 wiz_defined-function locations,
+            578 strings with 6606 characters,
+and the built_in function-call counts, 5431 in all, are:
+= -- 515
+> -- 352
+< -- 5
++ -- 143
+- -- 126
+* -- 420
+:= -- 919
+add.period$ -- 43
+call.type$ -- 13
+change.case$ -- 100
+chr.to.int$ -- 0
+cite$ -- 14
+duplicate$ -- 179
+empty$ -- 360
+format.name$ -- 126
+if$ -- 1115
+int.to.chr$ -- 0
+int.to.str$ -- 13
+missing$ -- 11
+newline$ -- 67
+num.names$ -- 26
+pop$ -- 111
+preamble$ -- 1
+purify$ -- 86
+quote$ -- 0
+skip$ -- 122
+stack$ -- 0
+substring$ -- 253
+swap$ -- 45
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 52
+warning$ -- 1
+while$ -- 48
+width$ -- 15
+write$ -- 145
+(There was 1 warning)

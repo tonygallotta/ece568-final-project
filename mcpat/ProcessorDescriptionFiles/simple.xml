@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+    <component id="root" name="root">
+        <component id="system" name="system">
+             <param name="number_of_cores" value="3"/>
+             <param name="homogeneous_cores" value="0"/>
+             <param name="number_of_L1Directories" value="3"/>
+             <param name="number_of_L2Directories" value="0"/>
+             <param name="number_of_L2s" value="1"/>
+             <param name="Private_L2" value="0"/>
+             <param name="number_of_L3s" value="0"/>
+             <param name="number_of_NoCs" value="1"/>
+             <!--...-->
+             <component id="system.core0" name="core0">
+                 <!-- Core property -->
+                 <param name="clock_rate" value="{1e-6/config.system.cpu0.clock*1e12}"/>
+                 <param name="opt_local" value="1"/>
+                 <stat name="total_instructions" value="{stats.system.cpu0.iq.iqInstsIssued}"/>
+                 <!--...-->
+                 <component id="system.core0.itlb" name="itlb">
+                     <param name="number_entries" value="{config.system.cpu0.itb.size}"/>
+                     <stat name="total_accesses" value="{stats.system.cpu0.itb.fetch_accesses}"/>
+                 </component>
+             </component>
+             <component id="system.core1" name="core1">
+                 <!-- Core property -->
+                 <param name="clock_rate" value="{1e-6/config.system.cpu1.clock*1e12}"/>
+                 <param name="opt_local" value="1"/>
+                 <stat name="total_instructions" value="{stats.system.cpu1.iq.iqInstsIssued}"/>
+                 <!--...-->
+                 <component id="system.core1.itlb" name="itlb">
+                     <param name="number_entries" value="{config.system.cpu1.itb.size}"/>
+                     <stat name="total_accesses" value="{stats.system.cpu1.itb.fetch_accesses}"/>
+                 </component>
+             </component><component id="system.core2" name="core2">
+                 <!-- Core property -->
+                 <param name="clock_rate" value="{1e-6/config.system.cpu2.clock*1e12}"/>
+                 <param name="opt_local" value="1"/>
+                 <stat name="total_instructions" value="{stats.system.cpu2.iq.iqInstsIssued}"/>
+                 <!--...-->
+                 <component id="system.core2.itlb" name="itlb">
+                     <param name="number_entries" value="{config.system.cpu2.itb.size}"/>
+                     <stat name="total_accesses" value="{stats.system.cpu2.itb.fetch_accesses}"/>
+                     ...
+                 </component>
+             </component>
+         </component>
+     </component>

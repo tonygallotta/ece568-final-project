@@ -1,0 +1,82 @@
+\begin{thebibliography}{10}
+
+\bibitem{barker2008entering}
+K.~J. Barker, K.~Davis, A.~Hoisie, D.~J. Kerbyson, M.~Lang, S.~Pakin, and J.~C.
+  Sancho.
+\newblock Entering the petaflop era: the architecture and performance of
+  roadrunner.
+\newblock In {\em Proceedings of the 2008 ACM/IEEE conference on
+  Supercomputing}, page~1. IEEE Press, 2008.
+
+\bibitem{bellens2006cellss}
+P.~Bellens, J.~M. Perez, R.~M. Badia, and J.~Labarta.
+\newblock Cellss: a programming model for the cell be architecture.
+\newblock In {\em SC 2006 Conference, Proceedings of the ACM/IEEE}, pages 5--5.
+  IEEE, 2006.
+
+\bibitem{buttari2007limitations}
+A.~Buttari, J.~Dongarra, and J.~Kurzak.
+\newblock Limitations of the playstation 3 for high performance cluster
+  computing.
+\newblock 2007.
+
+\bibitem{chen2007cell}
+T.~Chen, R.~Raghavan, J.~N. Dale, and E.~Iwata.
+\newblock Cell broadband engine architecture and its first implementation - a
+  performance view.
+\newblock {\em IBM Journal of Research and Development}, 51(5):559--572, 2007.
+
+\bibitem{flachs2006microarchitecture}
+B.~Flachs, S.~Asano, S.~H. Dhong, H.~P. Hofstee, G.~Gervais, R.~Kim, T.~Le,
+  P.~Liu, J.~Leenstra, J.~Liberty, et~al.
+\newblock The microarchitecture of the synergistic processor for a cell
+  processor.
+\newblock {\em IEEE Journal of Solid-State Circuits}, 41(1):63--70, 2006.
+
+\bibitem{hofstee2005power}
+H.~P. Hofstee.
+\newblock Power efficient processor architecture and the cell processor.
+\newblock In {\em High-Performance Computer Architecture, 2005. HPCA-11. 11th
+  International Symposium on}, pages 258--262. IEEE, 2005.
+
+\bibitem{kahle2005introduction}
+J.~A. Kahle, M.~N. Day, H.~P. Hofstee, C.~R. Johns, et~al.
+\newblock Introduction to the cell multiprocessor.
+\newblock {\em IBM journal of Research and Development}, 49(4/5):589, 2005.
+
+\bibitem{kurzak2008playstation}
+J.~Kurzak, A.~Buttari, P.~Luszczek, and J.~Dongarra.
+\newblock The playstation 3 for high-performance scientific computing.
+\newblock {\em Computing in Science and Engineering}, 10(3):84--87, 2008.
+
+\bibitem{luley2011energy}
+R.~Luley, C.~Usmail, and M.~Barnell.
+\newblock Energy efficiency evaluation and benchmarking of afrl's condor high
+  performance computer.
+\newblock Technical report, DTIC Document, 2011.
+
+\bibitem{pham2005design}
+D.~Pham, S.~Asano, M.~Bolliger, M.~Day, H.~Hofstee, C.~Johns, J.~Kahle,
+  A.~Kameyama, J.~Keaty, Y.~Masubuchi, et~al.
+\newblock The design and implementation of a first-generation cell processor-a
+  multi-core soc.
+\newblock In {\em Integrated Circuit Design and Technology, 2005. ICICDT 2005.
+  2005 International Conference on}, pages 49--52. IEEE, 2005.
+
+\bibitem{stokes_2009}
+J.~Stokes.
+\newblock End of the line for ibm's cell, Nov 2009.
+
+\bibitem{stone2010opencl}
+J.~E. Stone, D.~Gohara, and G.~Shi.
+\newblock Opencl: A parallel programming standard for heterogeneous computing
+  systems.
+\newblock {\em Computing in science \& engineering}, 12(1-3):66--73, 2010.
+
+\bibitem{williams2006potential}
+S.~Williams, J.~Shalf, L.~Oliker, S.~Kamil, P.~Husbands, and K.~Yelick.
+\newblock The potential of the cell processor for scientific computing.
+\newblock In {\em Proceedings of the 3rd conference on Computing frontiers},
+  pages 9--20. ACM, 2006.
+
+\end{thebibliography}
