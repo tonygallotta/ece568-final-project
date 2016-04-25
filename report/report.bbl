@@ -1,5 +1,23 @@
 \begin{thebibliography}{10}
 
+\bibitem{radeon7970}
+Amd radeon hd 7970 ghz edition review: Battling for the performance crown.
+
+\bibitem{green500_062010}
+The green500 list - june 2010.
+
+\bibitem{green500}
+The green500 list news and submitted items.
+
+\bibitem{realworldtech}
+Isscc 2005: The cell microprocessor.
+
+\bibitem{about_hpl}
+The linpack benchmark.
+
+\bibitem{techpowerup}
+Techpowerup.
+
 \bibitem{barker2008entering}
 K.~J. Barker, K.~Davis, A.~Hoisie, D.~J. Kerbyson, M.~Lang, S.~Pakin, and J.~C.
   Sancho.
@@ -7,18 +25,6 @@ K.~J. Barker, K.~Davis, A.~Hoisie, D.~J. Kerbyson, M.~Lang, S.~Pakin, and J.~C.
   roadrunner.
 \newblock In {\em Proceedings of the 2008 ACM/IEEE conference on
   Supercomputing}, page~1. IEEE Press, 2008.
-
-\bibitem{bellens2006cellss}
-P.~Bellens, J.~M. Perez, R.~M. Badia, and J.~Labarta.
-\newblock Cellss: a programming model for the cell be architecture.
-\newblock In {\em SC 2006 Conference, Proceedings of the ACM/IEEE}, pages 5--5.
-  IEEE, 2006.
-
-\bibitem{buttari2007limitations}
-A.~Buttari, J.~Dongarra, and J.~Kurzak.
-\newblock Limitations of the playstation 3 for high performance cluster
-  computing.
-\newblock 2007.
 
 \bibitem{chen2007cell}
 T.~Chen, R.~Raghavan, J.~N. Dale, and E.~Iwata.
@@ -44,10 +50,13 @@ J.~A. Kahle, M.~N. Day, H.~P. Hofstee, C.~R. Johns, et~al.
 \newblock Introduction to the cell multiprocessor.
 \newblock {\em IBM journal of Research and Development}, 49(4/5):589, 2005.
 
-\bibitem{kurzak2008playstation}
-J.~Kurzak, A.~Buttari, P.~Luszczek, and J.~Dongarra.
-\newblock The playstation 3 for high-performance scientific computing.
-\newblock {\em Computing in Science and Engineering}, 10(3):84--87, 2008.
+\bibitem{li2009mcpat}
+S.~Li, J.~H. Ahn, R.~D. Strong, J.~B. Brockman, D.~M. Tullsen, and N.~P.
+  Jouppi.
+\newblock Mcpat: an integrated power, area, and timing modeling framework for
+  multicore and manycore architectures.
+\newblock In {\em Proceedings of the 42nd Annual IEEE/ACM International
+  Symposium on Microarchitecture}, pages 469--480. ACM, 2009.
 
 \bibitem{luley2011energy}
 R.~Luley, C.~Usmail, and M.~Barnell.
@@ -62,21 +71,5 @@ D.~Pham, S.~Asano, M.~Bolliger, M.~Day, H.~Hofstee, C.~Johns, J.~Kahle,
   multi-core soc.
 \newblock In {\em Integrated Circuit Design and Technology, 2005. ICICDT 2005.
   2005 International Conference on}, pages 49--52. IEEE, 2005.
-
-\bibitem{stokes_2009}
-J.~Stokes.
-\newblock End of the line for ibm's cell, Nov 2009.
-
-\bibitem{stone2010opencl}
-J.~E. Stone, D.~Gohara, and G.~Shi.
-\newblock Opencl: A parallel programming standard for heterogeneous computing
-  systems.
-\newblock {\em Computing in science \& engineering}, 12(1-3):66--73, 2010.
-
-\bibitem{williams2006potential}
-S.~Williams, J.~Shalf, L.~Oliker, S.~Kamil, P.~Husbands, and K.~Yelick.
-\newblock The potential of the cell processor for scientific computing.
-\newblock In {\em Proceedings of the 3rd conference on Computing frontiers},
-  pages 9--20. ACM, 2006.
 
 \end{thebibliography}

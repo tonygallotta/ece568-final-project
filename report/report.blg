@@ -3,46 +3,55 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: abbrv.bst
 Database file #1: sigproc.bib
-Warning--empty journal in buttari2007limitations
-You've used 13 entries,
+Repeated entry---line 166 of file sigproc.bib
+ : @inproceedings{li2009mcpat
+ :                           ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in about_hpl
+Warning--to sort, need author or key in green500
+Warning--to sort, need author or key in techpowerup
+Warning--to sort, need author or key in green500_062010
+Warning--to sort, need author or key in realworldtech
+Warning--to sort, need author or key in radeon7970
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            578 strings with 6606 characters,
-and the built_in function-call counts, 5431 in all, are:
-= -- 515
-> -- 352
-< -- 5
-+ -- 143
-- -- 126
-* -- 420
-:= -- 919
-add.period$ -- 43
-call.type$ -- 13
-change.case$ -- 100
+            566 strings with 6113 characters,
+and the built_in function-call counts, 4745 in all, are:
+= -- 437
+> -- 269
+< -- 4
++ -- 115
+- -- 96
+* -- 336
+:= -- 732
+add.period$ -- 34
+call.type$ -- 14
+change.case$ -- 88
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 179
-empty$ -- 360
-format.name$ -- 126
-if$ -- 1115
+cite$ -- 20
+duplicate$ -- 167
+empty$ -- 379
+format.name$ -- 96
+if$ -- 1016
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 11
-newline$ -- 67
-num.names$ -- 26
-pop$ -- 111
+int.to.str$ -- 14
+missing$ -- 7
+newline$ -- 61
+num.names$ -- 16
+pop$ -- 123
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 73
 quote$ -- 0
-skip$ -- 122
+skip$ -- 147
 stack$ -- 0
-substring$ -- 253
+substring$ -- 218
 swap$ -- 45
-text.length$ -- 5
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
-warning$ -- 1
-while$ -- 48
-width$ -- 15
-write$ -- 145
-(There was 1 warning)
+type$ -- 56
+warning$ -- 6
+while$ -- 31
+width$ -- 16
+write$ -- 124
+(There was 1 error message)
