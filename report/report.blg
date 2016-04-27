@@ -18,45 +18,45 @@ Warning--to sort, need author or key in green500_062010
 Warning--to sort, need author or key in realworldtech
 Warning--to sort, need author or key in powerxcell
 Warning--to sort, need author or key in radeon7970
-You've used 15 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            568 strings with 6230 characters,
-and the built_in function-call counts, 4893 in all, are:
-= -- 449
-> -- 270
+            574 strings with 6486 characters,
+and the built_in function-call counts, 5260 in all, are:
+= -- 478
+> -- 298
 < -- 4
-+ -- 116
-- -- 96
-* -- 341
-:= -- 746
-add.period$ -- 35
-call.type$ -- 15
-change.case$ -- 91
++ -- 127
+- -- 106
+* -- 369
+:= -- 809
+add.period$ -- 38
+call.type$ -- 16
+change.case$ -- 99
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 174
-empty$ -- 402
-format.name$ -- 96
-if$ -- 1053
+cite$ -- 23
+duplicate$ -- 188
+empty$ -- 430
+format.name$ -- 106
+if$ -- 1127
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 7
-newline$ -- 64
-num.names$ -- 16
-pop$ -- 131
+int.to.str$ -- 16
+missing$ -- 8
+newline$ -- 69
+num.names$ -- 18
+pop$ -- 143
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 82
 quote$ -- 0
-skip$ -- 157
+skip$ -- 164
 stack$ -- 0
-substring$ -- 223
-swap$ -- 46
+substring$ -- 228
+swap$ -- 48
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 7
-while$ -- 31
-width$ -- 17
-write$ -- 129
+while$ -- 33
+width$ -- 18
+write$ -- 139
 (There were 2 error messages)

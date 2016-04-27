@@ -76,4 +76,10 @@ D.~Pham, S.~Asano, M.~Bolliger, M.~Day, H.~Hofstee, C.~Johns, J.~Kahle,
 \newblock In {\em Integrated Circuit Design and Technology, 2005. ICICDT 2005.
   2005 International Conference on}, pages 49--52. IEEE, 2005.
 
+\bibitem{multi2sim}
+R.~Ubal, B.~Jang, P.~Mistry, D.~Schaa, and D.~Kaeli.
+\newblock { Multi2Sim: A Simulation Framework for CPU-GPU Computing }.
+\newblock In {\em Proc. of the 21st International Conference on Parallel
+  Architectures and Compilation Techniques}, Sep. 2012.
+
 \end{thebibliography}

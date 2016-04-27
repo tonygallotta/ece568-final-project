@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 APR 2016 20:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 APR 2016 23:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -348,74 +348,85 @@ Overfull \hbox (7.91435pt too wide) in paragraph at lines 160--161
 wer,
  []
 
-[2] <./spe.png, id=15, 430.60875pt x 982.67125pt>
+[2]
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+
+<./spe.png, id=15, 430.60875pt x 982.67125pt>
 File: ./spe.png Graphic file (type png)
  <use ./spe.png>
-Package pdftex.def Info: ./spe.png used on input line 173.
+Package pdftex.def Info: ./spe.png used on input line 179.
 (pdftex.def)             Requested size: 172.24043pt x 393.06154pt.
- [3 <./spe.png>]
+ [3]
 Underfull \vbox (badness 2126) has occurred while \output is active []
 
-
-<./spe-voltage-freq.png, id=22, 443.7378pt x 461.0826pt>
+ [4 <./spe.png>] <./spe-voltage-freq.png, id=28, 443.7378pt x 461.0826pt>
 File: ./spe-voltage-freq.png Graphic file (type png)
 
 <use ./spe-voltage-freq.png>
-Package pdftex.def Info: ./spe-voltage-freq.png used on input line 240.
-(pdftex.def)             Requested size: 266.24472pt x 276.65169pt.
+Package pdftex.def Info: ./spe-voltage-freq.png used on input line 244.
+(pdftex.def)             Requested size: 443.73671pt x 461.08147pt.
 
-Overfull \hbox (26.24472pt too wide) in paragraph at lines 240--241
- [][] 
- []
+Underfull \vbox (badness 1558) has occurred while \output is active []
 
-<./cell_gpu_ops.png, id=23, 635.37375pt x 420.57124pt>
+
+<./cell_gpu_ops.png, id=29, 635.37375pt x 420.57124pt>
 File: ./cell_gpu_ops.png Graphic file (type png)
 
 <use ./cell_gpu_ops.png>
-Package pdftex.def Info: ./cell_gpu_ops.png used on input line 247.
+Package pdftex.def Info: ./cell_gpu_ops.png used on input line 267.
 (pdftex.def)             Requested size: 508.29968pt x 336.45746pt.
 
-Overfull \hbox (268.29968pt too wide) in paragraph at lines 247--248
+Overfull \hbox (4.29968pt too wide) in paragraph at lines 267--268
  [][] 
  []
 
-<./cell_gpu_opsperwatt.png, id=24, 632.3625pt x 324.21124pt>
+<./cell_gpu_opsperwatt.png, id=30, 632.3625pt x 324.21124pt>
 File: ./cell_gpu_opsperwatt.png Graphic file (type png)
 
 <use ./cell_gpu_opsperwatt.png>
-Package pdftex.def Info: ./cell_gpu_opsperwatt.png used on input line 254.
+Package pdftex.def Info: ./cell_gpu_opsperwatt.png used on input line 272.
 (pdftex.def)             Requested size: 505.89069pt x 259.36934pt.
 
-Overfull \hbox (265.89069pt too wide) in paragraph at lines 254--255
+Overfull \hbox (1.89069pt too wide) in paragraph at lines 272--273
  [][] 
  []
 
-(./report.bbl [4]) [5 <./spe-voltage-freq.png>] [6
 
- <./cell_gpu_ops.png> <./cell_gpu_opsperwatt.png>] (./report.aux) ) 
+LaTeX Warning: Reference `lim2014power' on page \thepage  undefined on input li
+ne 287.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+[6 <./spe-voltage-freq.png>] [7 <./cell_gpu_ops.png> <./cell_gpu_opsperwatt.png
+>] (./report.bbl) [8] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4397 strings out of 493117
- 58989 string characters out of 6135433
- 144977 words of memory out of 5000000
- 7743 multiletter control sequences out of 15000+600000
- 56983 words of font info for 82 fonts, out of 8000000 for 9000
+ 4392 strings out of 493117
+ 58962 string characters out of 6135433
+ 143981 words of memory out of 5000000
+ 7744 multiletter control sequences out of 15000+600000
+ 53836 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,35p,2013b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/
-texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2014/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2014/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2014/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2014/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
-urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/hel
-vetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmb
-8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on report.pdf (6 pages, 955931 bytes).
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb>
+Output written on report.pdf (8 pages, 940733 bytes).
 PDF statistics:
  85 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream
