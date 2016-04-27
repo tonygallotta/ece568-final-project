@@ -1,4 +1,4 @@
 The report folder contains all the latex files for the final report
 
-The McPAT folder contains the source code for McPAT, and the configurations
+The McPAT folder contains the source code for McPAT, and the configurations and results
 used specifically for this project in the ```cell-configs``` subdirectory.

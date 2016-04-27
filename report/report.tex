@@ -389,6 +389,7 @@ In this study, we have presented several reasons for the downfall of the Cell ar
 
 Although IBM's Cell processor line is no more, this was a pioneering architecture for HPC. One can speculate that this was a motivating factor in GPU manufacturers' adoption of general purpose programming models, and as the first commercially successful heterogeneous architecture, it certainly paved the way for this category of processors. Although elements such as the local storage have been removed, and the characteristics of the "synergistic" processors have changed, today's single chip CPU + GPU devices carry on key architectural principles from the Cell architecture of having different cores for different jobs. They strategy of having one type of core to run an operating system and coordinate tasks, and using many smaller, simplified cores to accelerate computations is still very relevant and lives on in these devices.
 
+
 \bibliographystyle{abbrv}
 \bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
 %
@@ -401,5 +402,9 @@ Although IBM's Cell processor line is no more, this was a pioneering architectur
 %  and remember to run:
 % latex bibtex latex latex
 % to resolve all references
+
+\appendix
+
+The configurations and simulation output used for power modeling are available at \url{https://github.com/tonygallotta/ece568-final-project}
 
 \end{document}
