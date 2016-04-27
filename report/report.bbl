@@ -30,6 +30,12 @@ K.~J. Barker, K.~Davis, A.~Hoisie, D.~J. Kerbyson, M.~Lang, S.~Pakin, and J.~C.
 \newblock In {\em Proceedings of the 2008 ACM/IEEE conference on
   Supercomputing}, page~1. IEEE Press, 2008.
 
+\bibitem{buttari2007limitations}
+A.~Buttari, J.~Dongarra, and J.~Kurzak.
+\newblock Limitations of the playstation 3 for high performance cluster
+  computing.
+\newblock 2007.
+
 \bibitem{chen2007cell}
 T.~Chen, R.~Raghavan, J.~N. Dale, and E.~Iwata.
 \newblock Cell broadband engine architecture and its first implementation - a
@@ -53,6 +59,11 @@ H.~P. Hofstee.
 J.~A. Kahle, M.~N. Day, H.~P. Hofstee, C.~R. Johns, et~al.
 \newblock Introduction to the cell multiprocessor.
 \newblock {\em IBM journal of Research and Development}, 49(4/5):589, 2005.
+
+\bibitem{kurzak2008playstation}
+J.~Kurzak, A.~Buttari, P.~Luszczek, and J.~Dongarra.
+\newblock The playstation 3 for high-performance scientific computing.
+\newblock {\em Computing in Science and Engineering}, 10(3):84--87, 2008.
 
 \bibitem{li2009mcpat}
 S.~Li, J.~H. Ahn, R.~D. Strong, J.~B. Brockman, D.~M. Tullsen, and N.~P.
@@ -81,5 +92,11 @@ R.~Ubal, B.~Jang, P.~Mistry, D.~Schaa, and D.~Kaeli.
 \newblock { Multi2Sim: A Simulation Framework for CPU-GPU Computing }.
 \newblock In {\em Proc. of the 21st International Conference on Parallel
   Architectures and Compilation Techniques}, Sep. 2012.
+
+\bibitem{williams2006potential}
+S.~Williams, J.~Shalf, L.~Oliker, S.~Kamil, P.~Husbands, and K.~Yelick.
+\newblock The potential of the cell processor for scientific computing.
+\newblock In {\em Proceedings of the 3rd conference on Computing frontiers},
+  pages 9--20. ACM, 2006.
 
 \end{thebibliography}

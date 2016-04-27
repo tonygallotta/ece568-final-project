@@ -155,11 +155,12 @@ The PPE is a dual-threaded, dual-issue (in order) 64-bit Power Architecture comp
 \subsubsection{Synergistic Processing Elements}
 
 Each SPE has direct memory access (DMA) to main memory, and a fast local memory, as well as a large 128 register file. All 8 SPEs are connected via a 25.6 GB/s element interconnect bus (EIB), which also provides connections to main memory and I/O controllers \cite{kahle2005introduction}. A SIMD instruction set (with scalar support) was chosen for the SPE, as it had become the dominant ISA for CPU media support at the time, and it is optimized for power and performance on media and compute-intensive operations.
-The largest component in the SPE is the local store (implemented with SRAM), which is where the unit loads data and instructions from, and what differentiates the Cell architecture most from traditional cores that use an L1 cache. An SPE issues DMA commands (up to 16 may be outstanding) in order to load data from main memory (or another SPE core, if it has permission) to its local store. Since the local store must be explicitly managed by software, memory latency is constant, compared to a hardware managed cache, where it is unknown to the programmer what may be in the various cache levels at any given time. While this adds some programming complexity, it also results in more predictable performance, and lower power consumption. This generally results in a much higher memory bandwidth as well, since the software is able to load more useful data then a cache. Branch prediction logic is lacking in the hardware layer, with only a simple static predictor, and must be implemented in software if a better predictor is desired \cite{flachs2006microarchitecture}. Mispredicted branches can be costly as well, with a pipeline flush requiring 18 cycles, so software should be cautious of this. This simplicity again results in higher area and power efficiency. The SPE is an in order processor, and does not perform any register renaming, although it can issue two instructions per cycle if execution units are available for both.
+
+The largest component in the SPE is the local store (implemented with SRAM), which is where the unit loads data and instructions from, and what differentiates the SPE architecture most from traditional cores that use an L1 cache. An SPE issues DMA commands (up to 16 may be outstanding) in order to load data from main memory (or another SPE core, if it has permission) to its local store. Since the local store must be explicitly managed by software, memory latency is constant, compared to a hardware managed cache, where it is unknown to the programmer what may be in the various cache levels at any given time. While this adds programming complexity, it also results in more predictable performance, and lower power consumption, which is why Cell architects chose this design. This generally results in a much higher memory bandwidth as well, since the software is able to load more useful data then a cache. Branch prediction logic is lacking in the hardware layer, with only a simple static predictor, and must be implemented in software if a better predictor is desired \cite{flachs2006microarchitecture}. Mispredicted branches can be costly as well, with a pipeline flush requiring 18 cycles, so software should be cautious of this. This simplicity again results in higher area and power efficiency. The SPE is an in order processor, and does not perform any register renaming, although it can issue two instructions per cycle if execution units are available for both.
 
 \section{Related Work}
 
-Numerous studies have been published [4,5,6] comparing the performance of the Cell to homogeneous and single core architectures. In \cite{chen2007cell}, published by IBM, the authors compare performance of scientific applications on the Cell against competitive superscalar and SIMD architectures and demonstrate its superiority to both, but GPUs are not considered.
+Numerous studies have been published (\cite{buttari2007limitations} \cite{kurzak2008playstation} \cite{williams2006potential}) comparing the performance of the Cell to homogeneous and single core architectures. In \cite{chen2007cell}, published by IBM, the authors compare performance of scientific applications on the Cell against competitive superscalar and SIMD architectures and demonstrate its superiority to both, but GPUs are not considered.
 In \cite{hofstee2005power}, an article published by IBM before the first release of the Cell BE, the authors explore performance per transistor as an efficiency metric. This metric approximates performance per Watt, assuming a constant power draw per transistor, which is reasonable to make under CMOS technology \cite{hofstee2005power}. They detail the design trends of architectures that tend to decrease this efficiency, and advocate architectural details like the local store used in the Cell to improve performance per transistor. While all of their logic makes sense intuitively, the authors fail to quantify any of their statements with experimental results.
 
 High performance LINPACK (HPL) is a benchmark that solves a dense system of linear equations, and is commonly used to measure performance of supercomputers for rankings such as the TOP500 \cite{about_hpl} and Green 500 \cite{green500}. The U.S. Air Force's Condor Cluster was designed to be competitive with top supercomputers in terms of raw performance, but with much greater energy efficiency. It's target applications were also optimized to use SP computations. To achieve its goals, the system was designed to have 78 compute nodes, each composed of 2 NVIDIA GPGPUs, 1 Intel Xeon X5650 (a 12 core chip), and a connected subcluster of 22 PS3s. In \cite{luley2011energy}, the authors run HPL on a cluster of 2 PS3s and calculate an energy efficiency of 52 MFLOPS/W, which is sufficient to place the PS3 nodes of the Condor in the top 20\% of the November 2010 Green 500 List. The authors report the same metric for the NVIDIA C2050 nodes, which obtain an energy efficiency of .966 GFLOPS/W, which would place them in the top 99\% of the same list. The authors do not make the comparison here since it is not the focus of their research, we can extrapolate these results to make some comparisons between the Cell and GPU. This is not the PS3's best possible performance since the HPL implementation uses double precision (DP) floating point computations. If we assume the same power consumption (199W average) and the improved DP performance of the PowerXCell 8i of 108.8GFLOPS, we can roughly calculate a best case performance for the Cell architecture of 0.547 GFLOPS/W, which is still just better than half the efficiency of the GPU. There are some flaws in this calculation, such as the fact that the PS3 used in \cite{luley2011energy} used a Cell chip manufactured using a 90nm technology, versus the 40nm \cite{techpowerup} process used for the GPU, but it gives direction for future comparisons.
@@ -214,6 +215,8 @@ Our model does have some inherent flaws, however, since we are limited to the ca
 
 The dimensions of the initial 90nm SOI technology SPE were 2.54mm by 5.81mm (14.76 $mm^2$), per \cite{flachs2006microarchitecture}. We use this as a target for our McPAT model. We use the image of a SPE provided in \cite{flachs2006microarchitecture}  and shown in figure 1 to calculate the percentage of the die occupied by each unit, based on the number of pixels it occupies, and compare this to our McPAT output. Overall, the Cell occupies an area of 221 $mm^2$ \cite{realworldtech} , while our model occupies 291 $mm^2$. McPAT provides output in terms of functional blocks within the core - categorizing all subcomponents as part of the instruction fetch unit (IFU), load-store unit (LSU), memory management unit (MMU), or execution unit (XU). For the total area of the core, it reports a number larger than the sum of these 4 units, so we categorize this area into "Others". \cite{li2009mcpat} details the subcomponents contained in many of these units. However, there are still some parts of figure \ref{spe_die} that we cannot determine a one to one mapping for. We intuitively categorize the local storage as part of the LSU, since this is where McPAT puts the L1 data cache, and we put the remainder into the "Others" category as this makes sense from the perspective of chip area allocation.
 
+Next, we compare our 45nm simulation to the PowerXCell 8i. The PowerXCell 8i occupies roughly half the area of the 90nm Cell BE, at 109 $mm^2$, while our model occupies about 100 $mm^2$. This is surprising since our 90nm model was larger than it's actual implementation, and an issue that we consider further in our power model discussion below.
+
 \subsection{Power Model Validation}
 
 To validate our power model, we compare our model SPE's power consumption to the voltage/frequency shmoo published for an SPE in \cite{flachs2006microarchitecture}, both at 90nm. The published results we compare to are integer values only, which makes it difficult to judge the trend. We see that in the worst case, our model consumes 3x the power of the actual SPE, and 2x at a higher voltage ($V_dd = 1.3$). We can attribute this to several factors. First, our model uses a cache, which we know to draw more power than the local storage used in an SPE. Second, we know that STI designed several custom latches and latches \cite{pham2005design} to improve power efficiency and latency on the Cell, whereas McPAT has been validated against more commonly used hardware components. The results published in \cite{flachs2006microarchitecture} also note that they are reporting "active power", which they define as the amount of power consumed by switching logic and array circuits. While this sounds the same as the peak  power numbers we gather from McPAT, there may be some difference in the methodology of power reporting. Unfortunately it is quite difficult to find published TDP values for the entire Cell BE chip at 90nm. IBM has removed all Cell specifications from their site, however unofficial sources report TDP as high as 110W for the chip alone, and a peak of 199W has been observed for the PlayStation 3 running a 90nm Cell BE core, and powering other components such as a hard drive, etc, giving a high upper bound. Our model gives a peak power of 146W for the chip overall. Even with some uncertainty in the published SPE results, and inconsistent reports of overall TDP, it seems probable that our model is consuming more power than the actual Cell BE would.
@@ -222,7 +225,7 @@ To further evaluate the accuracy of our model, we compare a 45nm scale version t
 
 \subsection{Energy Efficiency vs. Modern GPU}
 
-We compare our Cell models to a modern GPU architecture. The AMD Radeon 7970 is an ideal candidate, as an example configuration is provided with Multi2Sim that has been validated against this architecture, and AMD has published results on its theoretical peak performance and power consumption. Released in 2012, the Radeon 7970 was built using a 28nm process, has a peak theoretical DP performance of over 1 TFLOPS, and a peak power draw of 250W \cite{radeon7970}. Therefore, it has a peak theoretical performance/power ratio of 4 GFLOPS/W. With a peak DP performance of 108.8 GFLOPS in the PowerXCell 8i, assuming we could scale this to 32 SPEs without running into further limitations, we would expect a peak theoretical DP performance of 435.2 GFLOPS on a 32 SPE Cell processor. For our 32 SPE Cell model, we quadruple all shared resources as well. We obtain a peak power consumption of 65 W, which using our theoretical peak performance gives a peak theoretical power efficiency of 6.7 GFLOPS/W. This result gives some hope that it may be possible for the Cell architecture to compete with GPGPUs, however, our performance modeling shows that the architecture cannot achieve anything near this peak theoretical performance.
+We compare our Cell models to a modern GPU architecture. The AMD Radeon 7970 is an ideal candidate, as an example configuration is provided with Multi2Sim that has been validated against this architecture, and AMD has published results on its theoretical peak performance and power consumption. Released in 2012, the Radeon 7970 was built using a 28nm process, has a peak theoretical DP performance of over 1 TFLOPS, and a peak power draw of 250W \cite{radeon7970}. Therefore, it has a peak theoretical performance/power ratio of 4 GFLOPS/W. With a peak DP performance of 108.8 GFLOPS in the PowerXCell 8i, assuming we could scale this to 32 SPEs without encountering communication or other bottlenecks, we would expect a peak theoretical DP performance of 435.2 GFLOPS on a 32 SPE Cell processor. For our 32 SPE Cell model, we quadruple all shared resources as well. We obtain a peak power consumption of 60 W, which using our theoretical peak performance gives a peak theoretical power efficiency of 7.25 GFLOPS/W. This result gives some hope that it may be possible for the Cell architecture to compete with GPGPUs, however, we have some skepticism due to the concerns about the validity of our power model discussed in the previous sections. In addition, our performance models discussed subsequently indicate that the Cell's memory system is a limiting factor on its achievable performance.
 
 \begin{table*}[t]
 \centering
@@ -249,6 +252,61 @@ We compare our Cell models to a modern GPU architecture. The AMD Radeon 7970 is 
 \label{table:spe_area}
 \caption{Cell model vs. actual area at 90nm}
 \end{table*}
+
+\begin{table*}
+\centering
+\begin{tabular}{| l | c | c | c | c | c | c | c |} \hline
+Benchmark & \multicolumn{5}{|c|}{Cell}   &   Instr/Sec & Instr/W \\ \hline
+ & & \multicolumn{2}{|c|}{x86 (PPE)} & \multicolumn{2}{|c|}{SPE} \\ \hline
+ & Total Time & Time & Instr. & Time & Instr. & & \\ \hline    
+BinarySearch & 0.47 & 0.37 & 1020506 & 0.09 & 128 & 2,171,562 & 9,442 \\ \hline
+BinomialOption & 709.42 & 0.38 & 796163 & 709.22 & 1984512 & 3,920 & 17 \\ \hline
+BlackScholes & 479.87 & 6.93 & 22983346 & 473.71 & 1139712 & 50,270 & 219 \\ \hline
+DCT & 11.99 & 3.01 & 6450648 & 9.01 & 20672 & 539,726 & 2,347 \\ \hline
+DwtHaar1D & 6.38 & 5.51 & 12132204 & 0.84 & 2113 & 1,901,931 & 8,269 \\ \hline
+EigenValue & 154.8 & 2.93 & 8761627 & 151.87 & 1617502 & 67,049 & 292 \\ \hline
+FastWalshTransform & 8.5 & 3.23 & 7379484 & 5.29 & 4000 & 868,645 & 3,777 \\ \hline
+FFT & 1.42 & 1.41 & 1530000 & 0.58 & 1316 & 1,078,392 & 4,689 \\ \hline
+FloydWarshall & 551.7 & 3.78 & 7682561 & 548.31 & 188820 & 14,268 & 62 \\ \hline
+MatrixMultiplication & 27.54 & 16.11 & 46121929 & 11.39 & 8000 & 1,675,016 & 7,283 \\ \hline
+MatrixTranspose & 10.02 & 0.78 & 1636251 & 9.24 & 3392 & 163,637 & 711 \\ \hline
+PrefixSum & 1.66 & 1.18 & 3973824 & 0.46 & 1341 & 2,394,678 & 10,412 \\ \hline
+QuasiRandomSeq & 18.91 & 13.87 & 27073094 & 5.04 & 32288 & 1,433,389 & 6,232 \\ \hline
+Reduction & 0.75 & 0.53 & 1352960 & 0.25 & 714 & 1,804,899 & 7,847 \\ \hline
+ScanLargeArrays & 5.71 & 3.97 & 8891798 & 1.74 & 3688 & 1,557,878 & 6,773 \\ \hline
+SimpleConvolution & 12.3 & 0.53 & 1060946 & 11.79 & 17900 & 87,711 & 381 \\ \hline
+\end{tabular}
+\label{table:cell_performance}
+\caption{Cell model performance}
+\end{table*}
+
+\begin{table*}
+\centering
+\begin{tabular}{| l | c | c | c | c | c | c | c |} \hline
+Benchmark & \multicolumn{5}{|c|}{GPU}   &   Instr/Sec & Instr/W \\ \hline
+ & & \multicolumn{2}{|c|}{x86 (PPE)} & \multicolumn{2}{|c|}{SPE} \\ \hline
+ & Total Time & Time & Instr. & Time & Instr. & & \\ \hline    
+BinarySearch & 0.47 & 0.37 & 1020506 & 0.09 & 128 & 2,171,562 & 9,442 \\ \hline
+BinomialOption & 709.42 & 0.38 & 796163 & 709.22 & 1984512 & 3,920 & 17 \\ \hline
+BlackScholes & 479.87 & 6.93 & 22983346 & 473.71 & 1139712 & 50,270 & 219 \\ \hline
+DCT & 11.99 & 3.01 & 6450648 & 9.01 & 20672 & 539,726 & 2,347 \\ \hline
+DwtHaar1D & 6.38 & 5.51 & 12132204 & 0.84 & 2113 & 1,901,931 & 8,269 \\ \hline
+EigenValue & 154.8 & 2.93 & 8761627 & 151.87 & 1617502 & 67,049 & 292 \\ \hline
+FastWalshTransform & 8.5 & 3.23 & 7379484 & 5.29 & 4000 & 868,645 & 3,777 \\ \hline
+FFT & 1.42 & 1.41 & 1530000 & 0.58 & 1316 & 1,078,392 & 4,689 \\ \hline
+FloydWarshall & 551.7 & 3.78 & 7682561 & 548.31 & 188820 & 14,268 & 62 \\ \hline
+MatrixMultiplication & 27.54 & 16.11 & 46121929 & 11.39 & 8000 & 1,675,016 & 7,283 \\ \hline
+MatrixTranspose & 10.02 & 0.78 & 1636251 & 9.24 & 3392 & 163,637 & 711 \\ \hline
+PrefixSum & 1.66 & 1.18 & 3973824 & 0.46 & 1341 & 2,394,678 & 10,412 \\ \hline
+QuasiRandomSeq & 18.91 & 13.87 & 27073094 & 5.04 & 32288 & 1,433,389 & 6,232 \\ \hline
+Reduction & 0.75 & 0.53 & 1352960 & 0.25 & 714 & 1,804,899 & 7,847 \\ \hline
+ScanLargeArrays & 5.71 & 3.97 & 8891798 & 1.74 & 3688 & 1,557,878 & 6,773 \\ \hline
+SimpleConvolution & 12.3 & 0.53 & 1060946 & 11.79 & 17900 & 87,711 & 381 \\ \hline
+\end{tabular}
+\label{table:gpu_performance}
+\caption{GPU model performance}
+\end{table*}
+
 
 \begin{figure*}
 \centering
@@ -286,7 +344,7 @@ Ideally we would have liked to use the industry standard unit of Floating point 
 \end{figure*}
 
 
-From figures \ref{cell_gpu_ops} and \ref{cell_gpu_opsperwatt} we see how much performance difference can be seen between Cell processors and GPUs. We ran through multiple parallelized computational applications to see how their underlying architectures govern their performance. 
+From figures \ref{cell_gpu_ops} and \ref{cell_gpu_opsperwatt} we see how much performance difference can be seen between Cell processors and GPUs. Tables \ref{table:cell_performance} and \ref{table:gpu_performance} present the full details of our simulation output. We ran through multiple parallelized computational applications to see how their underlying architectures govern their performance. 
 
 First, we start our analysis to measure the peak performance capabilities (figure \ref{cell_gpu_ops}), for this reason we do not focus on power consumption.  Here we see for some programs the Cell processors performed almost as well as the GPU. There is only a marginal gain in performance in benchmark applications such as BinomialOption, FFT and FloydWarshall. This can be due to the low inherence cache requirement in these applications. So the performance of both the parallel applications is similar to each other in the different architecture. 
 
@@ -302,6 +360,10 @@ We can see for some applications Cell processors perform marginally better than 
 \section{Conclusion}
 
 In this paper we have studied how a Cell processor architecture was well suited to high performance computing at the time of its introduction. Although, it was developed as a CPU in a game console, its use was realized in supercomputing and other applications. From our study we can draw several conclusions as to why the Cell processor line was discontinued.
+
+\subsection{Factors in the downfall of Cell}
+
+We summarize several factors that contributed to the discontinuation of the Cell architecture.
 
 \subsubsection{Main Memory access rate}
 Execution units can generate floating point results at a speed that is much higher than the speed at which the memory can feed data to the execution units. The main memory of the Cell processor is capable of a 25.6 GB/s peak transfer rate, which in turn limits each SPE to a peak performance of 25.6 Gflop/s in single precision, assuming instructions on a single operand. This is not just for the cell processors alone, but the memory developments have not kept up with the developments in the processor technology. 
@@ -321,6 +383,11 @@ The Cell processor’s SPEs did not have caches in them. And it would require th
 
 Since in the late 2009s, the GPU technology was seen as a coprocessor. It had more number of threads to provide for the same size of processor. This allowed for the parallelism to increase 100 folds. Since a cell processor could only provide 10 to 100 SPEs, a GPU could provide more than a 1000 threads for parallel execution. Even more, the GPUs had a unified language which made it easier to program it than a Cell processor.
 
+\subsection{Concluding Remarks}
+
+In this study, we have presented several reasons for the downfall of the Cell architecture. We have presented models for both power and performance simulation, and although we believe there are some flaws in our methodology, they support our theory, and with further refinement could be better used to simulate the Cell. Through published studies measuring the performance of the Cell and GPUs independently, and the Green500 list, we have seen that GPGPUs can achieve greater energy efficiency than the Cell. Through standardization of programming models and libraries, we have seen even greater adoption of GPGPUs for massively parallel HPC applications.
+
+Although IBM's Cell processor line is no more, this was a pioneering architecture for HPC. One can speculate that this was a motivating factor in GPU manufacturers' adoption of general purpose programming models, and as the first commercially successful heterogeneous architecture, it certainly paved the way for this category of processors. Although elements such as the local storage have been removed, and the characteristics of the "synergistic" processors have changed, today's single chip CPU + GPU devices carry on key architectural principles from the Cell architecture of having different cores for different jobs. They strategy of having one type of core to run an operating system and coordinate tasks, and using many smaller, simplified cores to accelerate computations is still very relevant and lives on in these devices.
 
 \bibliographystyle{abbrv}
 \bibliography{sigproc}  % sigproc.bib is the name of the Bibliography in this case
