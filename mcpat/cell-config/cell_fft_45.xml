@@ -22,7 +22,7 @@
     <param name="homogeneous_L3s" value="1"/>
     <param name="homogeneous_ccs" value="1"/><!--cache coherence hardware -->
     <param name="homogeneous_NoCs" value="1"/>
-    <param name="core_tech_node" value="90"/><!-- nm -->
+    <param name="core_tech_node" value="45"/><!-- nm -->
     <param name="target_core_clockrate" value="3200"/><!--MHz -->
     <param name="temperature" value="350"/> <!-- Kelvin -->
     <param name="number_cache_levels" value="2"/>
@@ -34,9 +34,9 @@
     <param name="virtual_address_width" value="64"/>
     <param name="physical_address_width" value="52"/>
     <param name="virtual_memory_page_size" value="4096"/>
-    <stat name="total_cycles" value="4512"/>
+    <stat name="total_cycles" value="2300"/>
     <stat name="idle_cycles" value="0"/>
-    <stat name="busy_cycles"  value="4512"/>
+    <stat name="busy_cycles"  value="2300"/>
 
     <component id="system.core0" name="core0">
       <!-- Core property -->
@@ -156,9 +156,9 @@
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
       <stat name="idle_cycles" value="0"/>
-      <stat name="busy_cycles"  value="4512"/>
+      <stat name="busy_cycles"  value="2300"/>
       <!-- RAT accesses -->
       <stat name="rename_accesses" value="263886"/>
       <stat name="fp_rename_accesses" value="263886"/>
@@ -355,22 +355,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -382,29 +382,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -549,22 +549,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -576,29 +576,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -743,22 +743,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -770,29 +770,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -937,22 +937,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -964,29 +964,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -1131,22 +1131,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -1158,29 +1158,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -1325,22 +1325,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -1352,29 +1352,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -1519,22 +1519,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -1546,29 +1546,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->
@@ -1713,22 +1713,22 @@
 
       <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
       <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-      <stat name="total_instructions" value="1530000"/>
-      <stat name="int_instructions" value="1500000"/>
-      <stat name="fp_instructions" value="30000"/>
+      <stat name="total_instructions" value="{{total_instructions}}"/>
+      <stat name="int_instructions" value="{{int_instructions}}"/>
+      <stat name="fp_instructions" value="{{fp_instructions}}"/>
       <stat name="branch_instructions" value="0"/>
       <stat name="branch_mispredictions" value="0"/>
-      <stat name="load_instructions" value="1000000"/>
-      <stat name="store_instructions" value="1000000"/>
-      <stat name="committed_instructions" value="1530000"/>
-      <stat name="committed_int_instructions" value="1500000"/>
-      <stat name="committed_fp_instructions" value="30000"/>
+      <stat name="load_instructions" value="100000"/>
+      <stat name="store_instructions" value="100000"/>
+      <stat name="committed_instructions" value="{{total_instructions}}"/>
+      <stat name="committed_int_instructions" value="{{int_instructions}}"/>
+      <stat name="committed_fp_instructions" value="{{fp_instructions}}"/>
       <stat name="pipeline_duty_cycle" value="0.6"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
       <!-- the following cycle stats are used for heterogeneous cores only,
         please ignore them if homogeneous cores -->
-      <stat name="total_cycles" value="4512"/>
+      <stat name="total_cycles" value="2300"/>
         <stat name="idle_cycles" value="0"/>
-        <stat name="busy_cycles"  value="4512"/>
+        <stat name="busy_cycles"  value="2300"/>
       <!-- instruction buffer stats -->
       <!-- ROB stats, both RS and Phy based OoOs have ROB
       performance simulator should capture the difference on accesses,
@@ -1740,29 +1740,29 @@
       <stat name="fp_rename_accesses" value="263886"/>
       <!-- decode and rename stage use this, should be total ic - nop -->
       <!-- Inst window stats -->
-      <stat name="inst_window_reads" value="1530000"/>
-      <stat name="inst_window_writes" value="1530000"/>
-      <stat name="inst_window_wakeup_accesses" value="1530000"/>
-      <stat name="fp_inst_window_reads" value="1530000"/>
-      <stat name="fp_inst_window_writes" value="1530000"/>
-      <stat name="fp_inst_window_wakeup_accesses" value="1530000"/>
+      <stat name="inst_window_reads" value="263886"/>
+      <stat name="inst_window_writes" value="263886"/>
+      <stat name="inst_window_wakeup_accesses" value="263886"/>
+      <stat name="fp_inst_window_reads" value="263886"/>
+      <stat name="fp_inst_window_writes" value="263886"/>
+      <stat name="fp_inst_window_wakeup_accesses" value="263886"/>
       <!--  RF accesses -->
-      <stat name="int_regfile_reads" value="1500000"/>
-      <stat name="float_regfile_reads" value="30000"/>
-      <stat name="int_regfile_writes" value="1500000"/>
-      <stat name="float_regfile_writes" value="30000"/>
+      <stat name="int_regfile_reads" value="1600000"/>
+      <stat name="float_regfile_reads" value="40000"/>
+      <stat name="int_regfile_writes" value="800000"/>
+      <stat name="float_regfile_writes" value="20000"/>
       <!-- accesses to the working reg -->
       <stat name="function_calls" value="5"/>
       <stat name="context_switches" value="260343"/>
       <!-- Number of Windows switches (number of function calls and returns)-->
       <!-- Alu stats by default, the processor has one FPU that includes the divider and
        multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-      <!-- <stat name="ialu_accesses" value="800000"/>
+      <stat name="ialu_accesses" value="800000"/>
       <stat name="fpu_accesses" value="10000"/>
       <stat name="mul_accesses" value="100000"/>
       <stat name="cdb_alu_accesses" value="1000000"/>
       <stat name="cdb_mul_accesses" value="0"/>
-      <stat name="cdb_fpu_accesses" value="0"/> -->
+      <stat name="cdb_fpu_accesses" value="0"/>
       <!-- multiple cycle accesses should be counted multiple times,
       otherwise, McPAT can use internal counter for different floating point instructions
       to get final accesses. But that needs detailed info for floating point inst mix -->

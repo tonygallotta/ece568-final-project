@@ -7,51 +7,56 @@ Repeated entry---line 166 of file sigproc.bib
  : @inproceedings{li2009mcpat
  :                           ,
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 190 of file sigproc.bib
+ : url={http://www.ibm.com/developerworks/rational/cafe/docBodyAttachments/2636-102-1-3388/technology_cell_IDC_report_on_PowerXCell.pdf}
+ :                                                                                                                                      {
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in about_hpl
 Warning--to sort, need author or key in green500
 Warning--to sort, need author or key in techpowerup
 Warning--to sort, need author or key in green500_062010
 Warning--to sort, need author or key in realworldtech
+Warning--to sort, need author or key in powerxcell
 Warning--to sort, need author or key in radeon7970
-You've used 14 entries,
+You've used 15 entries,
             2118 wiz_defined-function locations,
-            566 strings with 6113 characters,
-and the built_in function-call counts, 4745 in all, are:
-= -- 437
-> -- 269
+            568 strings with 6230 characters,
+and the built_in function-call counts, 4893 in all, are:
+= -- 449
+> -- 270
 < -- 4
-+ -- 115
++ -- 116
 - -- 96
-* -- 336
-:= -- 732
-add.period$ -- 34
-call.type$ -- 14
-change.case$ -- 88
+* -- 341
+:= -- 746
+add.period$ -- 35
+call.type$ -- 15
+change.case$ -- 91
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 167
-empty$ -- 379
+cite$ -- 22
+duplicate$ -- 174
+empty$ -- 402
 format.name$ -- 96
-if$ -- 1016
+if$ -- 1053
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 15
 missing$ -- 7
-newline$ -- 61
+newline$ -- 64
 num.names$ -- 16
-pop$ -- 123
+pop$ -- 131
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 75
 quote$ -- 0
-skip$ -- 147
+skip$ -- 157
 stack$ -- 0
-substring$ -- 218
-swap$ -- 45
+substring$ -- 223
+swap$ -- 46
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
-warning$ -- 6
+type$ -- 60
+warning$ -- 7
 while$ -- 31
-width$ -- 16
-write$ -- 124
-(There was 1 error message)
+width$ -- 17
+write$ -- 129
+(There were 2 error messages)

@@ -22,7 +22,7 @@
     <param name="homogeneous_L3s" value="1"/>
     <param name="homogeneous_ccs" value="1"/><!--cache coherence hardware -->
     <param name="homogeneous_NoCs" value="1"/>
-    <param name="core_tech_node" value="90"/><!-- nm -->
+    <param name="core_tech_node" value="28"/><!-- nm -->
     <param name="target_core_clockrate" value="3200"/><!--MHz -->
     <param name="temperature" value="350"/> <!-- Kelvin -->
     <param name="number_cache_levels" value="2"/>

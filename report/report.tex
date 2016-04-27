@@ -177,13 +177,31 @@ Our model does have some inherent flaws, however, since we are limited to the ca
 
 \section{Experimental Results}
 
+\begin{table*}[t]
+\centering
+\begin{tabular}{| l | c | l |} \hline
+\# SPEs & Technology Scale (nm) & Peak Power (W) \\ \hline
+8 & 90 & 146 \\ \hline  
+8 & 45 & 51 \\ \hline  
+8 & 28 & 19 \\ \hline  
+16 & 45 & 89 \\ \hline  
+16 & 28 & 33 \\ \hline  
+32 & 45 & 165 \\ \hline  
+32 & 28 & 60 \\ \hline  
+\end{tabular}
+\label{table:cell_model_power}
+\caption{Cell model power by technology}
+\end{table*}
+
 \subsection{Area Model Validation}
 
 The dimensions of the initial 90nm SOI technology SPE were 2.54mm by 5.81mm (14.76 $mm^2$), per \cite{flachs2006microarchitecture}. We use this as a target for our McPAT model. We use the image of a SPE provided in \cite{flachs2006microarchitecture}  and shown in figure 1 to calculate the percentage of the die occupied by each unit, based on the number of pixels it occupies, and compare this to our McPAT output. Overall, the Cell occupies an area of 221 $mm^2$ \cite{realworldtech} , while our model occupies 291 $mm^2$. McPAT provides output in terms of functional blocks within the core - categorizing all subcomponents as part of the instruction fetch unit (IFU), load-store unit (LSU), memory management unit (MMU), or execution unit (XU). For the total area of the core, it reports a number larger than the sum of these 4 units, so we categorize this area into "Others". \cite{li2009mcpat} details the subcomponents contained in many of these units. However, there are still some parts of figure \ref{spe_die} that we cannot determine a one to one mapping for. We intuitively categorize the local storage as part of the LSU, since this is where McPAT puts the L1 data cache, and we put the remainder into the "Others" category as this makes sense from the perspective of chip area allocation.
 
 \subsection{Power Model Validation}
 
-To validate our power model, we compare our model SPE's power consumption to the voltage/frequency shmoo published for an SPE in \cite{flachs2006microarchitecture}, both at 90nm. The published results we compare to are integer values only, which makes it difficult to judge the trend. We see that in the worst case, our model consumes 3x the power of the actual SPE, and 2x at a higher voltage ($V_dd = 1.3$). We can attribute this to several factors. First, our model uses a cache, which we know to draw more power than the local storage used in an SPE. Second, we know that STI designed several custom latches and latches \cite{pham2005design} to improve power efficiency and latency on the Cell, whereas McPAT has been validated against more commonly used hardware components.
+To validate our power model, we compare our model SPE's power consumption to the voltage/frequency shmoo published for an SPE in \cite{flachs2006microarchitecture}, both at 90nm. The published results we compare to are integer values only, which makes it difficult to judge the trend. We see that in the worst case, our model consumes 3x the power of the actual SPE, and 2x at a higher voltage ($V_dd = 1.3$). We can attribute this to several factors. First, our model uses a cache, which we know to draw more power than the local storage used in an SPE. Second, we know that STI designed several custom latches and latches \cite{pham2005design} to improve power efficiency and latency on the Cell, whereas McPAT has been validated against more commonly used hardware components. The results published in \cite{flachs2006microarchitecture} also note that they are reporting "active power", which they define as the amount of power consumed by switching logic and array circuits. While this sounds the same as the peak  power numbers we gather from McPAT, there may be some difference in the methodology of power reporting. Unfortunately it is quite difficult to find published TDP values for the entire Cell BE chip at 90nm. IBM has removed all Cell specifications from their site, however unofficial sources report TDP as high as 110W. Our model gives a peak power of 146W for all cores combined. Even with some uncertainty in the published SPE results, and inconsistent reports of overall TDP, it seems probable that our model is consuming more power than the actual Cell BE would.
+
+To better understand the accuracy of our model, we compare a 45nm scale version to the PowerXCell8i, whose only significant architectural change other than SOI technology was the floating point pipeline. At 45nm, our model gives a peak power of 50W, which is significantly lower than the 92W TDP reported for the PowerXCell 8i in \cite{powerxcell}. This leads us to have some doubts in the validity of our model. Table \ref{table:cell_model_power} shows the peak power output from McPAT for different numbers of SPE cores in our model, and at different technology sizes. The power consumption appears to decrease at a rate faster than linear with technology scale. It is possible that the 45nm PowerXCell did not fully take advantage of technology improvements that McPAT is modeling at this scale, but this still leads us to be skeptical that the McPAT power levels would actually be attainable. Taken at face value, these results do give some hope for the theoretical scalability of the Cell architecture, as far as its ability to remain power efficient.
 
 \subsection{Energy Efficiency vs. Modern GPU}
 
@@ -213,6 +231,7 @@ We compare our Cell models to a modern GPU architecture. The AMD Radeon 7970 is 
 \textbf{Total}  & 100\%  & 14.75 & 100\% & 21.75   \\ \hline
 \end{tabular}
 \label{table:spe_area}
+\caption{Cell model vs. actual area at 90nm}
 \end{table*}
 
 
@@ -221,6 +240,20 @@ We compare our Cell models to a modern GPU architecture. The AMD Radeon 7970 is 
 \includegraphics[scale=0.6]{./spe-voltage-freq}
 \caption{Model vs. published power consumption for an SPE}
 \label{spe-voltage-freq}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{./cell_gpu_ops}
+\caption{Modeled Cell vs. GPU performance}
+\label{cell_gpu_ops}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.8]{./cell_gpu_opsperwatt}
+\caption{Modeled Cell vs. GPU performance / power}
+\label{cell_gpu_opsperwatt}
 \end{figure}
 
 \bibliographystyle{abbrv}
