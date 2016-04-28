@@ -374,7 +374,7 @@ Peak performance of double precision floating point arithmetic was a factor of 1
  
 \subsubsection{Programming difficulties}
 
-Writing efficient and fast code for the Cell processor is, in fact, a difficult task since it requires a deep knowledge of the processor architecture, of the development environment, and some experience. High performance can only be achieved if very low level code is produced that is on the border line between high level languages and assembly. Besides requiring a lot of effort, source code developed for the Cell processor is not portable at all on other architectures. When GPUs came into computing market, they released APIs and programming constructs to make use of the parallel architecture. They unlike IBM, introduced programmer friendly construct and provided good support to developers. These are extremely important factors in a time where human resource (developer) costs generally exceed hardware costs for typical applications. The risks associated with having application code that is not portable also take away from the appeal of the Cell.  
+Writing efficient and fast code for the Cell processor is, in fact, a difficult task since it requires a deep knowledge of the processor architecture, of the development environment, and some experience. High performance can only be achieved if very low level code is produced that is on the border line between high level languages and assembly. Besides requiring a lot of effort, source code developed for the Cell processor is not portable at all on other architectures. IBM’s architecture relied on the POWER Instruction set architecture, which was not as prevalent as x86 architecture. This made the software not portable and a cross compiling together with code manipulations was required to be implemented on Cell architecture. So to get the desired performance, more time and money was required to be spend in developing code catered to Cell architecture. When GPUs came into computing market, they released APIs and programming constructs to make use of the parallel architecture. They unlike IBM, introduced programmer friendly construct and provided good support to developers. These are extremely important factors in a time where human resource (developer) costs generally exceed hardware costs for typical applications. The risks associated with having application code that is not portable also take away from the appeal of the Cell.  
 
 \subsubsection{Lack of Caches} 
 The Cell processor’s SPEs did not have caches in them. And it would require the programmer to predict the branching and cache misses and program it. Although this allowed the programmer more flexibility and performance potential, it increases programming difficulty and can lead to worse performance if not utilized correctly. 
@@ -382,6 +382,14 @@ The Cell processor’s SPEs did not have caches in them. And it would require th
 \subsubsection{The rise of GPU}
 
 Since in the late 2009s, the GPU technology was seen as a coprocessor. It had more number of threads to provide for the same size of processor. This allowed for the parallelism to increase 100 folds. Since a cell processor could only provide 10 to 100 SPEs, a GPU could provide more than a 1000 threads for parallel execution. Even more, the GPUs had a unified language which made it easier to program it than a Cell processor.
+
+\subsubsection{Lack of Bandwidth}
+
+From our study, we saw how data hungry processors are when the number of parallel processors are increased. To address this, GPUs have Graphics RAM on the same motherboard with clever interconnects to increase bandwidths. Cell processor could not keep up with the data demand. 
+
+\subsubsection{Fewer hardware contexts}
+
+At the height of Cell architecture development, a maximum of 32 SPE based core was proposed (which we used in our analysis). Comparing this with the GPUs of its time was not enough. Since most GPUs could provide more than 1000 threads to be executed according to SIMD parallelism.
 
 \subsection{Concluding Remarks}
 
